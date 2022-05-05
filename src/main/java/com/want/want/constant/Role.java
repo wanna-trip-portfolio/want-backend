@@ -1,4 +1,4 @@
-package com.want.want.domain.auth;
+package com.want.want.constant;
 
 public enum Role {
     ADMIN, MANAGER, USER

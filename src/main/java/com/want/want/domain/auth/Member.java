@@ -1,21 +1,27 @@
 package com.want.want.domain.auth;
 
-import com.want.want.dto.auth.MemberJoinReqDto;
+import com.want.want.constant.Role;
+import com.want.want.dto.auth.join.MemberJoinReqDto;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "member")
-@Getter @Setter
+@Builder
+@Getter
+@DynamicInsert
 public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long memberId;
 
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String webId;
 
     @Column(nullable = false)
@@ -27,7 +33,7 @@ public class Member {
     @Column(nullable = false)
     private String gender;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String nickName;
 
     @Column(nullable = false)
@@ -42,6 +48,8 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @ColumnDefault("'H'")
+    private String joinGbn;
 
     private LocalDateTime localDateTime = LocalDateTime.now();
 
