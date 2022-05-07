@@ -1,4 +1,4 @@
-package com.want.want.dto.auth.join;
+package com.want.want.dto.member.join;
 
 import lombok.Getter;
 import lombok.Setter;

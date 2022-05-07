@@ -1,9 +1,10 @@
-package com.want.want.domain.auth;
+package com.want.want.domain.member;
 
 import com.want.want.constant.Role;
-import com.want.want.dto.auth.join.MemberJoinReqDto;
-import lombok.Builder;
+import com.want.want.dto.member.join.MemberJoinReqDto;
+import com.want.want.dto.member.login.LoginDto;
 import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
@@ -12,8 +13,9 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "member")
-@Builder
+//@Builder
 @Getter
+@Setter
 @DynamicInsert
 public class Member {
 
@@ -33,7 +35,7 @@ public class Member {
     @Column(nullable = false)
     private String gender;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String nickName;
 
     @Column(nullable = false)
@@ -67,5 +69,10 @@ public class Member {
         this.email = reqDto.getEmail();
         this.phoneNumber = reqDto.getPhoneNumber();
         this.role = Role.USER;
+    }
+
+    public Member(LoginDto loginDto) {
+        this.webId = loginDto.getWebId();
+        this.webPw = loginDto.getWebPw();
     }
 }

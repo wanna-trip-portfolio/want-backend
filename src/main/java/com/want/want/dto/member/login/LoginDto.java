@@ -1,4 +1,4 @@
-package com.want.want.dto.auth.login;
+package com.want.want.dto.member.login;
 
 import lombok.Data;
 
