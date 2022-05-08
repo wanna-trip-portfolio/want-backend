@@ -5,6 +5,7 @@ import com.want.want.common.WantResBody;
 import com.want.want.dto.member.join.MemberJoinReqDto;
 import com.want.want.dto.member.login.LoginDto;
 import com.want.want.dto.session.MemberSession;
+import com.want.want.exception.UnauthorizedAccessException;
 import com.want.want.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -48,8 +49,14 @@ public class MemberController {
 
     @PostMapping("/login")
     public ResponseEntity<WantResBody> postLogin(@RequestBody LoginDto loginDto,
-                                                 HttpServletRequest request) {
+                                                 HttpServletRequest request) throws UnauthorizedAccessException {
         MemberSession result = memberService.login(loginDto, request);
         return ResponseEntity.ok(WantResBody.success(result));
+    }
+
+    @GetMapping("/logout")
+    public ResponseEntity<WantResBody> logoutMember(HttpServletRequest request) {
+        request.getSession().invalidate();
+        return ResponseEntity.ok(WantResBody.success(DataStatusMessage.LOGOUT_SUCCESS));
     }
 }

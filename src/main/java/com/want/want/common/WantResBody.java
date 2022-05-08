@@ -12,6 +12,11 @@ public class WantResBody {
         this.result = result;
     }
 
+    public WantResBody(String result, Object data) {
+        this.result = result;
+        this.data = data;
+    }
+
     public WantResBody data(Object data) {
         this.data = data;
         return this;

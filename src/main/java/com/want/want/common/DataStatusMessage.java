@@ -6,7 +6,8 @@ public enum DataStatusMessage {
     DELETE_SUCCESS("delete success"),
     INSERT_FAIL("insert fail"),
     UPDATE_FAIL("update fail"),
-    DELETE_FAIL("delete fail");
+    DELETE_FAIL("delete fail"),
+    LOGOUT_SUCCESS("logout success");
 
     private String message;
 

@@ -2,7 +2,6 @@ package com.want.want.domain.member;
 
 import com.want.want.constant.Role;
 import com.want.want.dto.member.join.MemberJoinReqDto;
-import com.want.want.dto.member.login.LoginDto;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
@@ -71,8 +70,4 @@ public class Member {
         this.role = Role.USER;
     }
 
-    public Member(LoginDto loginDto) {
-        this.webId = loginDto.getWebId();
-        this.webPw = loginDto.getWebPw();
-    }
 }
