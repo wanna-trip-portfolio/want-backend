@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://13.125.8.160:3306;databaseName=want;
+    username: want
+    password: Want1203@@
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hiberrnate:
+        format_sql: true
+        show_sql: true
