@@ -4,6 +4,7 @@ import com.want.want.constant.Role;
 import com.want.want.dto.member.join.MemberJoinReqDto;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@ToString
 @Table(name = "member")
 //@Builder
 @Getter
