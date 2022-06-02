@@ -1,7 +1,10 @@
 package com.want.want.domain.board;
 
-import com.want.want.constant.BoardType;
-import lombok.Data;
+import com.want.want.domain.member.Member;
+import com.want.want.dto.board.BoardReqDto;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
@@ -9,7 +12,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "board")
-@Data
+@Getter @Setter
+@NoArgsConstructor
 @DynamicInsert
 public class Board {
 
@@ -17,11 +21,13 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long boardId;
 
-    //private Member member;
+    @ManyToOne
+    @JoinColumn(name = "memberId")
+    private Member member;
+
     //private Nation nation;
 
-    @Enumerated(EnumType.STRING)
-    private BoardType boardType;
+    private String boardType;
 
     @Column(nullable = false)
     private String title;
@@ -34,4 +40,10 @@ public class Board {
 
     @ColumnDefault("'0'")
     private int heart;
+
+    public Board(String boardType, BoardReqDto reqDto) {
+        this.boardType = boardType;
+        this.title = reqDto.getTitle();
+        this.content = reqDto.getContent();
+    }
 }
