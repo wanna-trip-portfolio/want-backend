@@ -18,10 +18,9 @@ public class Post extends BaseTime{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "member_id")
-    private Member member;
+    private Long memberId;
+
+    private String nickName;
 
     @NotNull
     @ManyToOne
@@ -41,8 +40,11 @@ public class Post extends BaseTime{
     private int heart;
 
     @Builder
-    public Post(Long memberId, Long boardId, String title, String content) {
+    public Post(Board board, Long memberId, String title, String content, String nickName) {
+        this.board = board;
         this.title = title;
         this.content = content;
+        this.memberId = memberId;
+        this.nickName = nickName;
     }
 }

@@ -9,11 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 public class MemberInfo {
 
     private Long memberId;
+    private String nickName;
 
     public MemberInfo(HttpServletRequest request) {
         MemberSession memberSession = (MemberSession) request.getSession().getAttribute("memberInfo");
         if (memberSession != null) {
             this.memberId = memberSession.getMemberId();
+            this.nickName = memberSession.getNickName();
         }
     }
 }

@@ -9,8 +9,6 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @ToString
@@ -55,8 +53,8 @@ public class Member {
     @ColumnDefault("'H'")
     private String joinGbn;
 
-    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
-    private List<Post> posts = new ArrayList<>();
+/*    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+    private List<Post> posts = new ArrayList<>();*/
 
     public Member() {
 

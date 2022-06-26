@@ -8,10 +8,7 @@ import com.want.want.dto.post.PostReqDto;
 import com.want.want.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/post")
@@ -26,10 +23,11 @@ public class PostController {
         return ResponseEntity.ok(WantResBody.success(result));
     }*/
 
-    @PostMapping("")
-    public ResponseEntity<WantResBody> createPost(@RequestBody PostReqDto reqDto,
+    @PostMapping("/{boardId}")
+    public ResponseEntity<WantResBody> createPost(@PathVariable Long boardId,
+                                                  @RequestBody PostReqDto reqDto,
                                                   @InfoMember MemberInfo memberInfo) {
-        postService.createPost(reqDto, memberInfo);
+        postService.createPost(boardId, reqDto, memberInfo);
         return ResponseEntity.ok(WantResBody.success(DataStatusMessage.INSERT_SUCCESS));
     }
 }
