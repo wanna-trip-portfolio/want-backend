@@ -23,4 +23,12 @@ public class MemberSession implements Serializable {
         this.nickName = infoDto.getNickName();
         this.role = infoDto.getRole();
     }
+
+    public MemberSession(MemberSession memberSession) {
+        this.memberId = memberSession.getMemberId();
+        this.webId = memberSession.getWebId();
+        this.name = memberSession.getName();
+        this.nickName = memberSession.getNickName();
+        this.role = memberSession.getRole();
+    }
 }

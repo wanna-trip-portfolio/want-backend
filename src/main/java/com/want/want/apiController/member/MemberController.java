@@ -6,7 +6,7 @@ import com.want.want.dto.member.join.MemberJoinReqDto;
 import com.want.want.dto.member.login.LoginDto;
 import com.want.want.dto.session.MemberSession;
 import com.want.want.exception.UnauthorizedAccessException;
-import com.want.want.service.member.MemberService;
+import com.want.want.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

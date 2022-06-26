@@ -1,21 +1,17 @@
 package com.want.want.dto.board;
 
-import com.want.want.domain.board.Board;
+import com.want.want.domain.Board;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
 public class BoardListDto {
 
-    private Long boardId;
-    private String boardType;
-    private String title;
-    private String content;
+    private Long id;
+    private String boardName;
 
     public BoardListDto(Board board) {
-        this.boardId = board.getBoardId();
-        this.boardType = board.getBoardType();
-        this.title = board.getTitle();
-        this.content = board.getContent();
+        this.id = board.getId();
+        this.boardName = board.getBoardName();
     }
 }

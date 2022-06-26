@@ -1,7 +1,7 @@
 package com.want.want.dto.member.login;
 
 import com.want.want.constant.Role;
-import com.want.want.domain.member.Member;
+import com.want.want.domain.Member;
 import lombok.Data;
 
 

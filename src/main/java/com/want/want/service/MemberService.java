@@ -1,12 +1,12 @@
-package com.want.want.service.member;
+package com.want.want.service;
 
-import com.want.want.domain.member.Member;
+import com.want.want.domain.Member;
 import com.want.want.dto.member.join.MemberJoinReqDto;
 import com.want.want.dto.member.login.LoginDto;
 import com.want.want.dto.member.login.LoginInfoDto;
 import com.want.want.dto.session.MemberSession;
 import com.want.want.exception.UnauthorizedAccessException;
-import com.want.want.repository.member.MemberRepository;
+import com.want.want.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +46,8 @@ public class MemberService {
             throw new UnauthorizedAccessException("아이디 또는 비밀번호를 확인해주세요");
         }
         LoginInfoDto infoDto = new LoginInfoDto(member);
-        return createSession(infoDto, request);
+        MemberSession session = createSession(infoDto, request);
+        return new MemberSession(session);
     }
 
     private MemberSession createSession(LoginInfoDto infoDto, HttpServletRequest request) {

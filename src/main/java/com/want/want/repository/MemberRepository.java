@@ -1,6 +1,6 @@
-package com.want.want.repository.member;
+package com.want.want.repository;
 
-import com.want.want.domain.member.Member;
+import com.want.want.domain.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {

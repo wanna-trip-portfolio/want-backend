@@ -1,4 +1,4 @@
-package com.want.want.domain.member;
+package com.want.want.domain;
 
 import com.want.want.constant.Role;
 import com.want.want.dto.member.join.MemberJoinReqDto;
@@ -9,7 +9,8 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @ToString
@@ -54,7 +55,8 @@ public class Member {
     @ColumnDefault("'H'")
     private String joinGbn;
 
-    private LocalDateTime localDateTime = LocalDateTime.now();
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+    private List<Post> posts = new ArrayList<>();
 
     public Member() {
 
