@@ -1,13 +1,15 @@
 package com.want.want.repository;
 
 import com.want.want.domain.Post;
-import com.want.want.dto.board.PostListDto;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
-    List<PostListDto> findAllById(Long boardId);
 
-    List<PostListDto> findByBoardId(Long boardId);
+    @Modifying
+    @Transactional
+    @Query("update Post p set p.hit = p.hit + 1 where p.id = :id")
+    int updateHit(Long id);
 }

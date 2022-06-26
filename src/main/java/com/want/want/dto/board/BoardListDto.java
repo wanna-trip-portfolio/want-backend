@@ -14,4 +14,5 @@ public class BoardListDto {
         this.id = board.getId();
         this.boardName = board.getBoardName();
     }
+
 }

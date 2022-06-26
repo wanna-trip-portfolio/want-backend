@@ -1,9 +1,8 @@
 package com.want.want.dto.post;
 
-import com.want.want.common.MemberInfo;
 import com.want.want.domain.Board;
+import com.want.want.domain.Member;
 import com.want.want.domain.Post;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,12 +11,11 @@ import lombok.NoArgsConstructor;
 public class PostReqDto {
 
     private Long boardId;
-    private Long memberId;
     private String title;
     private String content;
     private String nickName;
 
-    @Builder
+/*    @Builder
     public PostReqDto(Board board, MemberInfo memberInfo, String title, String content) {
         this.boardId = board.getId();
         this.memberId = memberInfo.getMemberId();
@@ -34,7 +32,24 @@ public class PostReqDto {
                 .nickName(nickName)
                 .memberId(memberId)
                 .build();
-    }
+    }*/
 
+/*    @Builder
+    public PostReqDto(Long boardId, MemberInfo memberInfo, String title, String content) {
+        this.boardId = boardId;
+        this.title = title;
+        this.content = content;
+        this.nickName = memberInfo.getNickName();
+    }*/
+
+    public Post toEntity(Member member, Board board) {
+        return Post.builder()
+                .member(member)
+                .board(board)
+                .title(title)
+                .content(content)
+                .nickName(member.getNickName())
+                .build();
+    }
 
 }

@@ -4,6 +4,7 @@ import com.want.want.common.DataStatusMessage;
 import com.want.want.common.InfoMember;
 import com.want.want.common.MemberInfo;
 import com.want.want.common.WantResBody;
+import com.want.want.dto.board.PostResDto;
 import com.want.want.dto.post.PostReqDto;
 import com.want.want.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -17,17 +18,24 @@ public class PostController {
 
     private final PostService postService;
 
-    /*@GetMapping("/{boardId}/list")
-    public ResponseEntity<WantResBody> getPostList(@PathVariable Long boardId) {
-        List<PostListDto> result = postService.findPostList(boardId);
+    @GetMapping("/{id}")
+    public ResponseEntity<WantResBody> getPost(@PathVariable Long id) {
+        PostResDto result = postService.findById(id);
         return ResponseEntity.ok(WantResBody.success(result));
-    }*/
+    }
 
-    @PostMapping("/{boardId}")
+/*    @PostMapping("/{boardId}")
     public ResponseEntity<WantResBody> createPost(@PathVariable Long boardId,
                                                   @RequestBody PostReqDto reqDto,
                                                   @InfoMember MemberInfo memberInfo) {
         postService.createPost(boardId, reqDto, memberInfo);
+        return ResponseEntity.ok(WantResBody.success(DataStatusMessage.INSERT_SUCCESS));
+    }*/
+
+    @PostMapping("")
+    public ResponseEntity<WantResBody> createPost(@RequestBody PostReqDto reqDto,
+                                                  @InfoMember MemberInfo memberInfo) {
+        postService.createPost(reqDto, memberInfo);
         return ResponseEntity.ok(WantResBody.success(DataStatusMessage.INSERT_SUCCESS));
     }
 }

@@ -28,54 +28,9 @@ public class BoardController {
     }
 
     /*@GetMapping("/{id}")
-    public ResponseEntity<WantResBody> getPostsList(@PathVariable Long id) {
-        List<PostListDto> result = boardService.findPostList(id);
+    public ResponseEntity<WantResBody> getPosts(@PathVariable Long id) {
+        BoardListDto result = boardService.findPosts(id);
         return ResponseEntity.ok(WantResBody.success(result));
-    }*/
-
-/*    @GetMapping("/category")
-    public ResponseEntity<WantResBody> getCategoryList() {
-        List<CategoryListDto> result = boardService.findCategoryList();
-        return ResponseEntity.ok(WantResBody.success(result));
-    }
-
-    @GetMapping("/board")
-    public ResponseEntity<WantResBody> getBoardList() {
-        List<BoardListDto> result = boardService.findBoardList();
-        return ResponseEntity.ok(WantResBody.success(result));
-    }
-
-    @GetMapping("/{boardId}")
-    public ResponseEntity<WantResBody> getBoardPost(@PathVariable Long boardId) {
-        BoardResDto result = boardService.findBoardPost(boardId);
-        return ResponseEntity.ok(WantResBody.success(result));
-    }
-
-    @PostMapping("")
-    public ResponseEntity<WantResBody> createPost(@RequestBody BoardReqDto reqDto,
-                                                  @InfoMember MemberInfo memberInfo) {
-        boardService.createPost(reqDto, memberInfo);
-        return ResponseEntity.ok(WantResBody.success(DataStatusMessage.INSERT_SUCCESS));
-    }*/
-
-    /*@GetMapping("/{boardType}")
-    public ResponseEntity<WantResBody> getBoardList(@PathVariable String boardType) {
-        List<BoardListDto> result = boardService.findBoardList(boardType);
-        return ResponseEntity.ok(WantResBody.success(result));
-    }
-
-    @GetMapping("/{boardType}/{boardId}")
-    public ResponseEntity<WantResBody> getBoardDetail(@PathVariable String boardType,
-                                                      @PathVariable Long boardId) {
-        BoardResDto result = boardService.findBoardDetail(boardType, boardId);
-        return ResponseEntity.ok(WantResBody.success(result));
-    }
-
-    @PostMapping("/{boardType}")
-    public ResponseEntity<WantResBody> postBoardDetail(@PathVariable String boardType,
-                                                       @ModelAttribute BoardReqDto reqDto) {
-        boardService.createBoardDetail(boardType, reqDto);
-        return ResponseEntity.ok(WantResBody.success(DataStatusMessage.INSERT_SUCCESS));
     }*/
 
 }
