@@ -1,5 +1,6 @@
 package com.want.want.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,4 +30,8 @@ public class Board {
     @OneToMany(mappedBy = "board", fetch = FetchType.LAZY)
     private List<Post> posts = new ArrayList<>();
 
+    @Builder
+    public Board(Long id) {
+        this.id = id;
+    }
 }

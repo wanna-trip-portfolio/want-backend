@@ -35,27 +35,15 @@ public class PostService {
 
     public void createPost(PostReqDto reqDto, MemberInfo memberInfo) {
 
-        Board board = boardRepository.findById(reqDto.getBoardId())
-                .orElseThrow(() -> new IllegalArgumentException("해당 게시판이 존재하지 않습니다."));
+        Board board = Board.builder()
+                .id(reqDto.getBoardId())
+                .build();
 
-        Member member = memberRepository.findById(memberInfo.getMemberId())
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원입니다."));
+        Member member = Member.builder()
+                .memberInfo(memberInfo)
+                .build();
 
         postRepository.save(reqDto.toEntity(member, board));
     }
 
-/*    @Transactional
-    public void createPost(Long boardId, PostReqDto reqDto, MemberInfo memberInfo) {
-        Board board = boardRepository.findById(boardId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 게시판이 존재하지 않습니다."));
-
-        PostReqDto req = PostReqDto.builder()
-                .board(board)
-                .title(reqDto.getTitle())
-                .content(reqDto.getContent())
-                .memberInfo(memberInfo)
-                .build();
-
-        postRepository.save(req.toEntity(board));
-    }*/
 }

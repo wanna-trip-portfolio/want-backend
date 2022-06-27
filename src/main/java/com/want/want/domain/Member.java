@@ -1,7 +1,9 @@
 package com.want.want.domain;
 
+import com.want.want.common.MemberInfo;
 import com.want.want.constant.Role;
 import com.want.want.dto.member.join.MemberJoinReqDto;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -70,6 +72,12 @@ public class Member {
         this.email = reqDto.getEmail();
         this.phoneNumber = reqDto.getPhoneNumber();
         this.role = Role.USER;
+    }
+
+    @Builder
+    public Member(MemberInfo memberInfo) {
+        this.memberId = memberInfo.getMemberId();
+        this.nickName = memberInfo.getNickName();
     }
 
 }
